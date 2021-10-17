@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FrontEnd\FrontendController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +25,15 @@ Route::get('/home', [FrontendController::class, 'index']);
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 
 Route::post('/login', [LoginController::class, 'login']);
+
+
+
+Route::group(['middleware' => ['auth', 'admin'],], function () {
+
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+});
+Route::group(['middleware' => ['auth', 'user'],], function () {
+    Route::get('/user', [UserController::class, 'register_second_part'])->name('user');
+    Route::post('/register-st-ts', [UserController::class, 'create'])->name('register.next');
+    Route::get('/register-fn-to-ts', [UserController::class, 'create_final'])->name('register.final');
+});

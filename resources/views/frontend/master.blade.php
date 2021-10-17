@@ -53,7 +53,7 @@
     <!-- Vendor JS Files -->
     <script src="{{ asset('front_end') }}/assets/vendor/aos/aos.js"></script>
     <script src="{{ asset('front_end') }}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('front_end') }}/assets/vendor/php-email-form/validate.js"></script>
+    <script src="{{ asset('front_end') }}/assets/vendor/php-email-form/validate.jsy"></script>
     <script src="{{ asset('front_end') }}/assets/vendor/purecounter/purecounter.js"></script>
     <script src="{{ asset('front_end') }}/assets/vendor/swiper/swiper-bundle.min.js"></script>
 

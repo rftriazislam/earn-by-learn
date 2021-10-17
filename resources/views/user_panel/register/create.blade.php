@@ -23,7 +23,7 @@
             <div class="row justify-content-center">
 
                 <div class="col-lg-8">
-                    <h1 class="text-center">Register</h1>
+                    <h1 class="text-center">Final Step 1</h1>
                     <div class="card">
 
                         <div class="card-body">
@@ -165,11 +165,9 @@
 
 
                                     <div class="text-center">
-                                        <a href="{{ route('login') }}" class="get-started-btn"> Login</a>
 
                                         <button type="submit" style="background: rebeccapurple"
-                                            class="get-started-btn">Register</button>
-
+                                            class="get-started-btn">Confirm</button>
                                     </div>
 
 
