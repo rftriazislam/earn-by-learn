@@ -1,3 +1,10 @@
+@php
+$payment = App\Models\PaymentMethod::where('user_id', 1)->get();
+@endphp
+
+
+
+
 @extends('frontend.master')
 
 @section('head')
@@ -23,8 +30,8 @@
             <div class="row justify-content-center">
 
                 <div class="col-lg-8">
-                    <h1 class="text-center">Final Step 1</h1>
-                    <div class="card">
+                    <h1 class="text-center">Final Step </h1>
+                    <div class="card" style="border: 0;">
 
                         <div class="card-body">
                             @if ($errors->any())
@@ -39,130 +46,151 @@
                             <form action="{{ route('register') }}" method="post" class="php-email-form">
                                 @csrf
                                 <div class="row">
+                                    <div
+                                        style="border: 3px solid #5fcf80;    margin-bottom: 13px;border-radius: 16px;    padding: 13px;">
+                                        <h4>Step 1 : Send $10 (800 BDT) Video Lecture </h4>
+                                        <div class="form-group ">
 
-                                    <div class="form-group mt-3 mt-md-0">
+                                            <div class="col-md-6">
+                                                <select name="country_code" id="step_1"
+                                                    class="form-control @error('country') is-invalid @enderror" required>
+                                                    <option disabled selected>Payment Method</option>
+                                                    @foreach ($payment as $item)
+                                                        <option value="{{ $item->method_name }}">
+                                                            {{ $item->method_name }}</option>
+                                                    @endforeach
 
-                                        <div class="col-md-12">
-                                            <select id="country" name="country_code"
-                                                class="form-control @error('country') is-invalid @enderror"
-                                                value="{{ old('country_code') }}" required autocomplete="country"
-                                                autofocus type="text" placeholder="country">
-                                                <option>Select Country</option>
-                                            </select>
 
-
-                                            @error('country')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group ">
-
-                                        <div class="col-md-12">
-
-                                            <select id="state" name="state"
-                                                class="form-control @error('state') is-invalid @enderror"
-                                                value="{{ old('state') }}" required autocomplete="country" autofocus
-                                                type="text" placeholder="country">
-                                                <option>Select State/Division</option>
-                                            </select>
-
-                                            <div id="country_3">
-                                            </div>
-                                            <div id="country_4">
-                                            </div>
-                                            <div id="country_5">
+                                                </select>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="form-group ">
 
+                                            <div class="col-md-12">
+                                                <input id="number" type="text"
+                                                    class="form-control @error('number') is-invalid @enderror" name="number"
+                                                    value="{{ old('number') }}" required autocomplete="number" autofocus
+                                                    placeholder="Your number">
 
-                                    <div class="form-group ">
+                                                @error('number')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
 
-                                        <div class="col-md-12">
-                                            <input id="name" type="text"
-                                                class="form-control @error('name') is-invalid @enderror" name="name"
-                                                value="{{ old('name') }}" required autocomplete="name" autofocus
-                                                placeholder="Your Name">
+                                            <div class="col-md-12">
+                                                <input id="phone" type="file"
+                                                    class="form-control @error('phone') is-invalid @enderror" name="file"
+                                                    value="{{ old('phone') }}" required>
 
-                                            @error('name')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                                @error('phone')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
+                                    <br>
+                                    <div
+                                        style="border: 3px solid #5fcf80;    margin-bottom: 13px;border-radius: 16px;    padding: 13px;">
+                                        <h4>Step 2 : Send $10 (800 BDT) Mentor-1 </h4>
+                                        <div class="form-group ">
 
-                                        <div class="col-md-12">
-                                            <input id="phone" type="text"
-                                                class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                                value="{{ old('phone') }}" required autocomplete="name" autofocus
-                                                placeholder="Your Phone Number">
+                                            <div class="col-md-6">
+                                                <select name="country_code" id="step_2"
+                                                    class="form-control @error('country') is-invalid @enderror" required>
+                                                    <option disabled selected>Payment Method</option>
 
-                                            @error('phone')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                                    @foreach ($user->mentor->mentor_payment as $item)
+                                                        <option value="{{ $item->method_name }}">
+                                                            {{ $item->method_name }}</option>
+                                                    @endforeach
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+
+                                            <div class="col-md-12">
+                                                <input id="number" type="text"
+                                                    class="form-control @error('number') is-invalid @enderror" name="number"
+                                                    value="{{ old('number') }}" required autocomplete="number" autofocus
+                                                    placeholder="Your number">
+
+                                                @error('number')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+
+                                            <div class="col-md-12">
+                                                <input id="phone" type="file"
+                                                    class="form-control @error('phone') is-invalid @enderror" name="file"
+                                                    value="{{ old('phone') }}" required>
+
+                                                @error('phone')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="form-group  mt-3 mt-md-0">
-                                        <input id="email" type="email"
-                                            class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ old('email') }}" required autocomplete="email" autofocus
-                                            placeholder="Your Email">
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+                                    <br>
+                                    <div
+                                        style="border: 3px solid #5fcf80;    margin-bottom: 13px;border-radius: 16px;    padding: 13px;">
+                                        <h4>Step 3 : Send $5 (400 BDT) Mentor-2</h4>
+                                        <div class="form-group ">
 
-                                    <div class=" form-group">
-                                        <input id="password" type="password"
-                                            class="form-control @error('password') is-invalid @enderror" name="password"
-                                            required autocomplete="current-password" placeholder="Your Password">
+                                            <div class="col-md-6">
+                                                <select name="country_code" id="step_3"
+                                                    class="form-control @error('country') is-invalid @enderror" required>
+                                                    <option disabled selected>Payment Method</option>
 
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+                                                    @foreach ($user->mentor->mentor->mentor_payment as $item)
+                                                        <option value="{{ $item->method_name }}">
+                                                            {{ $item->method_name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
 
-                                    <div class="form-group ">
+                                            <div class="col-md-12">
+                                                <input id="number" type="text"
+                                                    class="form-control @error('number') is-invalid @enderror" name="number"
+                                                    value="{{ old('number') }}" required autocomplete="number" autofocus
+                                                    placeholder="Your number">
 
+                                                @error('number')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
 
-                                        <div class="col-md-12">
-                                            <input id="password-confirm" type="password" class="form-control"
-                                                name="password_confirmation" required autocomplete="new-password"
-                                                placeholder="Password Confirm">
+                                            <div class="col-md-12">
+                                                <input id="phone" type="file"
+                                                    class="form-control @error('phone') is-invalid @enderror" name="file"
+                                                    value="{{ old('phone') }}" required>
+
+                                                @error('phone')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
-
-
-                                    <div class="form-group ">
-
-                                        <div class="col-md-12">
-                                            <input id="refered_id" type="text"
-                                                class="form-control @error('refered_id') is-invalid @enderror"
-                                                name="refered_id" value="{{ old('refered_id') }}" required
-                                                autocomplete="name" autofocus placeholder="Refered ID">
-
-                                            @error('refered_id')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-
-
 
                                     <div class="text-center">
 
@@ -174,6 +202,7 @@
 
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -189,4 +218,33 @@
 
 @section('js')
     <script src="{{ asset('front_end/country/js/country_list/country.js') }}"></script>
+    <script>
+        $('#step_1').on('change', function() {
+            var step_1 = $("#step_1 option:selected").val();
+            console.log(selectedVal);
+            get(step_1, 'step_1')
+        });
+
+        function get(id, data) {
+
+            var user_id = id;
+            var data = data;
+            $.ajax({
+                url: '{{ route('payment.method') }}',
+                type: 'get',
+                data: {
+                    "user_id=" + user_id,
+                    "data": data,
+                },
+                dataType: 'json',
+                success: function(data) {
+                    // console.log(data.output)
+                    $('#all_patient_confirm_list').html(data.output);
+                    $('#view_file_list').css('display', 'none');
+                }
+            });
+        }
+    </script>
+
+
 @endsection

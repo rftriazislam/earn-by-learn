@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Ajax\AjaxController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FrontEnd\FrontendController;
 use App\Http\Controllers\User\UserController;
+use Faker\Provider\ar_SA\Payment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +39,5 @@ Route::group(['middleware' => ['auth', 'user'],], function () {
     Route::post('/register-st-ts', [UserController::class, 'create'])->name('register.next');
     Route::get('/register-fn-to-ts', [UserController::class, 'create_final'])->name('register.final');
 });
+
+Route::get('/payment-at-rz-method', [AjaxController::class, 'payment_method'])->name('payment.method');
