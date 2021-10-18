@@ -18,7 +18,7 @@
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
-        <div class="container" data-aos="fade-up">
+        <div class="container">
 
             <div class="row justify-content-center">
 
@@ -27,6 +27,15 @@
                     <div class="card">
 
                         <div class="card-body">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <form action="{{ route('register') }}" method="post" class="php-email-form">
                                 @csrf
                                 <div class="row">
@@ -53,12 +62,20 @@
                                     <div class="form-group ">
 
                                         <div class="col-md-12">
+
                                             <select id="state" name="state"
                                                 class="form-control @error('state') is-invalid @enderror"
                                                 value="{{ old('state') }}" required autocomplete="country" autofocus
                                                 type="text" placeholder="country">
                                                 <option>Select State/Division</option>
                                             </select>
+
+                                            <div id="country_3">
+                                            </div>
+                                            <div id="country_4">
+                                            </div>
+                                            <div id="country_5">
+                                            </div>
                                         </div>
                                     </div>
 
@@ -150,8 +167,8 @@
                                     <div class="text-center">
                                         <a href="{{ route('login') }}" class="get-started-btn"> Login</a>
 
-                                        <a type="submit" style="background: rebeccapurple" class="get-started-btn">Register
-                                            Register</a>
+                                        <button type="submit" style="background: rebeccapurple"
+                                            class="get-started-btn">Register</button>
 
                                     </div>
 

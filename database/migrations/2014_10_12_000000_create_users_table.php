@@ -33,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('active')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->string('verifycode')->nullable();
+            $table->string('condition_check')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

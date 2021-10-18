@@ -18,11 +18,38 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
+        'id',
+        'role',
+        'refered_id',
+        'country',
+        'country_code',
+        'state',
+        'currency',
         'name',
         'email',
+        'phone',
+        'flag',
+        'address',
+        'latitude',
+        'longitude',
+        'image',
+        'balance',
+        'active',
+        'status',
+        'verifycode',
         'password',
+        'condition_check'
     ];
 
+    public function mentor()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'refered_id');
+    }
+
+    public function mentor_payment()
+    {
+        return $this->hasMany('App\Models\PaymentMethod', 'user_id', 'id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
