@@ -66,7 +66,7 @@ $payment_name = App\Models\MethodName::where('status', 1)->get();
                                     <div class="form-group ">
 
                                         <div class="col-md-12">
-                                            <textarea class="form-control" name="address"
+                                            <textarea class="form-control" required name="address"
                                                 placeholder="Your address"></textarea>
 
                                             @error('image')
