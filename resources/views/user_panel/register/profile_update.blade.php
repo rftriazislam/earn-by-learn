@@ -1,3 +1,9 @@
+@php
+$payment_name = App\Models\MethodName::where('status', 1)->get();
+@endphp
+
+
+
 @extends('frontend.master')
 
 @section('head')
@@ -36,7 +42,8 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="" method="post" class="php-email-form">
+                            <form action="{{ route('register.save.update') }}" method="post" class="php-email-form"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
 
@@ -71,8 +78,37 @@
                                     </div>
 
 
+                                    <h4>Payment Method</h4>
+                                    <div class="form-group ">
+
+                                        <div class="col-md-6">
+                                            <select name="method_name" id="step_3"
+                                                class="form-control @error('country') is-invalid @enderror" required>
+                                                <option disabled selected value=''>Payment Method</option>
+
+                                                @foreach ($payment_name as $item)
+                                                    <option value="{{ $item->method_name }}">
+                                                        {{ $item->method_name }}</option>
+                                                @endforeach
+                                            </select>
+
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group ">
+
+                                        <div class="col-md-12">
+                                            <input id="number" type="text" class="form-control" name="account_number"
+                                                autocomplete="number" autofocus required placeholder="Your A/C number">
+                                        </div>
+                                    </div>
+
+
+
                                     <div class="text-center">
-                                        <a href="{{ route('user') }}" class="get-started-btn"> Skip</a>
+                                        {{-- <a href="{{ route('user') }}" class="get-started-btn"> Skip</a> --}}
 
                                         <button type="submit" style="background: rebeccapurple"
                                             class="get-started-btn">Update</button>

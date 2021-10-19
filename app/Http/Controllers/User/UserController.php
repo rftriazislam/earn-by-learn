@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\MethodName;
 use App\Models\PaymentDetail;
+use App\Models\PaymentMethod;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -51,7 +53,8 @@ class UserController extends Controller
         $very = PaymentDetail::where('user_id', Auth::user()->id)->first();
         if ($very) {
             if ($very->status == 3) {
-                return redirect()->route('user.dashboard');
+                // return redirect()->route('user.dashboard');
+                return redirect()->route('register.profile.update');
             } else {
                 return view('user_panel.register.verify', compact('very'));
             }
@@ -191,5 +194,49 @@ class UserController extends Controller
         }
 
         return redirect()->route('register.final');
+    }
+
+    public function register_profile_update()
+    {
+        return view('user_panel.register.profile_update');
+    }
+
+    public function register_save_update(Request $request)
+    {
+        $validate =  $this->validate($request, [
+            'method_name' => 'required',
+            'account_number' => 'required',
+            'image' => 'required|image|mimes:jpg,png,jpeg',
+            'address' => 'required',
+        ]);
+
+
+        $update = User::where('id', Auth::user()->id)->first();
+
+        $update->update([
+            'address' => $request->address
+        ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imagename =  Auth::user()->id . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/storage/profile/');
+            $image->move($destinationPath, $imagename);
+            $update->update([
+                'image' => $imagename,
+            ]);
+        }
+
+        $method = new PaymentMethod();
+        $method->user_id = Auth::user()->id;
+        $method->method_name = $request->method_name;
+        $method->account_number = $request->account_number;
+        $method->account_name = $request->method_name;
+
+        if ($method->save()) {
+            return redirect()->route('user.dashboard');
+        } else {
+            return back();
+        }
     }
 }

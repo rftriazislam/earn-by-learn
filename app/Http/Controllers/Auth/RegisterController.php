@@ -56,7 +56,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'country' => ['required', 'string', 'max:80'],
-            'refered_id' => ['required', 'exists:users,id'],
+            'refered_id' => ['required', 'exists:payment_details,user_id'],
             'state' => ['required', 'string', 'max:80'],
             'name' => ['required', 'string', 'max:120'],
             'phone' => ['required', 'string', 'max:21', 'unique:users,phone'],

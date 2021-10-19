@@ -42,8 +42,10 @@ Route::group(['middleware' => ['auth', 'user'],], function () {
     Route::post('/register-st-ts-complete', [UserController::class, 'register_final_create'])->name('register.final.create');
     Route::get('/register-fn-ch-to-ps-recapture', [UserController::class, 'register_final_check'])->name('register.final.check');
     Route::post('/register-st-ts-update', [UserController::class, 'register_final_update'])->name('register.final.update');
-
     Route::get('/user/dashboard', [UserController::class, 'user_dashboard'])->name('user.dashboard');
+    Route::get('/register-profile-update', [UserController::class, 'register_profile_update'])->name('register.profile.update');
+
+    Route::post('/register-save-update', [UserController::class, 'register_save_update'])->name('register.save.update');
 });
 
 Route::get('/payment-at-rz-method', [AjaxController::class, 'payment_method'])->name('payment.method');
