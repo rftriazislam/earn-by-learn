@@ -18,15 +18,13 @@ class UserController extends Controller
 
 
     public function register_second_part()
+
     {
         $user = User::with(['mentor' => function ($q) {
             $q->select('id', 'refered_id')->with('mentor_payment:id,user_id,method_name')->with(['mentor' => function ($q) {
                 $q->select('id', 'refered_id')->with(['mentor_payment:id,user_id,method_name']);
             }]);
         }])->where('id', Auth::user()->id)->first();
-
-
-
 
         if ($user->condition_check == 'check' && !empty($user->mentor->mentor_payment) && !empty($user->mentor->mentor->mentor_payment)) {
             return redirect()->route('register.final');

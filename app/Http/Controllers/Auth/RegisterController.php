@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -30,7 +31,10 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/user';
+
+    // protected $redirectTo;
+
 
     /**
      * Create a new controller instance.
@@ -99,11 +103,14 @@ class RegisterController extends Controller
         }
         $lat = is_float($ip['latitude']);
         $lon = is_float($ip['longitude']);
+
+
         return User::create([
             'country' => $data['country'],
             'country_code' => $data['country_code'],
             'state' => $data['state'],
             'currency' => $data['currency'],
+            'refered_id' => $data['refered_id'],
             'flag' => $data['flag'],
             'latitude' => ($lat == true) ? $ip['latitude'] : 'Null',
             'longitude' => ($lon == true) ? $ip['longitude'] : 'Null',
@@ -113,4 +120,13 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+    // protected function redirectTo()
+    // {
+
+    //     if (Auth::user()->role == 'admin') {
+    //         return route('admin');
+    //     } elseif (Auth::user()->role == 'user') {
+    //         return route('user');
+    //     }
+    // }
 }
