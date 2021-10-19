@@ -198,7 +198,12 @@ class UserController extends Controller
 
     public function register_profile_update()
     {
-        return view('user_panel.register.profile_update');
+        $PaymentMethod = PaymentMethod::where('user_id', Auth::user()->id)->first();
+        if ($PaymentMethod) {
+            return redirect()->route('user.dashboard');
+        } else {
+            return view('user_panel.register.profile_update');
+        }
     }
 
     public function register_save_update(Request $request)
