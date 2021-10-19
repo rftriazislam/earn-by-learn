@@ -1,5 +1,5 @@
 @php
-$payment = App\Models\PaymentMethod::where('user_id', 1)->get();
+$payment = App\Models\PaymentMethod::where('role', 'admin')->get();
 @endphp
 
 
@@ -34,16 +34,9 @@ $payment = App\Models\PaymentMethod::where('user_id', 1)->get();
                     <div class="card" style="border: 0;">
 
                         <div class="card-body">
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                            <form action="{{ route('register') }}" method="post" class="php-email-form">
+
+                            <form action="{{ route('register.final.create') }}" method="post" class="php-email-form"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div
@@ -52,47 +45,20 @@ $payment = App\Models\PaymentMethod::where('user_id', 1)->get();
                                         <div class="form-group ">
 
                                             <div class="col-md-6">
-                                                <select name="country_code" id="step_1"
+                                                <select name="method_name" id="step_1"
                                                     class="form-control @error('country') is-invalid @enderror" required>
-                                                    <option disabled selected>Payment Method</option>
+                                                    <option disabled selected value=''>Payment Method</option>
                                                     @foreach ($payment as $item)
                                                         <option value="{{ $item->method_name }}">
                                                             {{ $item->method_name }}</option>
                                                     @endforeach
 
-
+                                                    <input name="user_id" value="{{ $user->id }}" type="hidden">
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group ">
+                                        <div id="data-step-1"> </div>
 
-                                            <div class="col-md-12">
-                                                <input id="number" type="text"
-                                                    class="form-control @error('number') is-invalid @enderror" name="number"
-                                                    value="{{ old('number') }}" required autocomplete="number" autofocus
-                                                    placeholder="Your number">
-
-                                                @error('number')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="form-group ">
-
-                                            <div class="col-md-12">
-                                                <input id="phone" type="file"
-                                                    class="form-control @error('phone') is-invalid @enderror" name="file"
-                                                    value="{{ old('phone') }}" required>
-
-                                                @error('phone')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
                                     </div>
                                     <br>
                                     <div
@@ -101,47 +67,22 @@ $payment = App\Models\PaymentMethod::where('user_id', 1)->get();
                                         <div class="form-group ">
 
                                             <div class="col-md-6">
-                                                <select name="country_code" id="step_2"
+                                                <select name="first_method_name" id="step_2"
                                                     class="form-control @error('country') is-invalid @enderror" required>
-                                                    <option disabled selected>Payment Method</option>
+                                                    <option disabled selected value=''>Payment Method</option>
 
                                                     @foreach ($user->mentor->mentor_payment as $item)
-                                                        <option value="{{ $item->method_name }}">
+                                                        <option tota_pakhi="{{ $user->refered_id }}"
+                                                            value="{{ $item->method_name }}">
                                                             {{ $item->method_name }}</option>
                                                     @endforeach
 
                                                 </select>
+                                                <input name="first_mentor_id" value="{{ $user->refered_id }}"
+                                                    type="hidden">
                                             </div>
                                         </div>
-                                        <div class="form-group ">
-
-                                            <div class="col-md-12">
-                                                <input id="number" type="text"
-                                                    class="form-control @error('number') is-invalid @enderror" name="number"
-                                                    value="{{ old('number') }}" required autocomplete="number" autofocus
-                                                    placeholder="Your number">
-
-                                                @error('number')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="form-group ">
-
-                                            <div class="col-md-12">
-                                                <input id="phone" type="file"
-                                                    class="form-control @error('phone') is-invalid @enderror" name="file"
-                                                    value="{{ old('phone') }}" required>
-
-                                                @error('phone')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
+                                        <div id="data-step-2"> </div>
                                     </div>
                                     <br>
                                     <div
@@ -150,58 +91,45 @@ $payment = App\Models\PaymentMethod::where('user_id', 1)->get();
                                         <div class="form-group ">
 
                                             <div class="col-md-6">
-                                                <select name="country_code" id="step_3"
+                                                <select name="second_method_name" id="step_3"
                                                     class="form-control @error('country') is-invalid @enderror" required>
-                                                    <option disabled selected>Payment Method</option>
+                                                    <option disabled selected value=''>Payment Method</option>
 
                                                     @foreach ($user->mentor->mentor->mentor_payment as $item)
-                                                        <option value="{{ $item->method_name }}">
+                                                        <option tota_pakhi="{{ $user->mentor->refered_id }}"
+                                                            value="{{ $item->method_name }}">
                                                             {{ $item->method_name }}</option>
                                                     @endforeach
                                                 </select>
+
+                                                <input name="second_mentor_id" value="{{ $user->refered_id }}"
+                                                    type="hidden">
                                             </div>
                                         </div>
-                                        <div class="form-group ">
 
-                                            <div class="col-md-12">
-                                                <input id="number" type="text"
-                                                    class="form-control @error('number') is-invalid @enderror" name="number"
-                                                    value="{{ old('number') }}" required autocomplete="number" autofocus
-                                                    placeholder="Your number">
-
-                                                @error('number')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="form-group ">
-
-                                            <div class="col-md-12">
-                                                <input id="phone" type="file"
-                                                    class="form-control @error('phone') is-invalid @enderror" name="file"
-                                                    value="{{ old('phone') }}" required>
-
-                                                @error('phone')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
+                                        <div id="data-step-3"> </div>
                                     </div>
+
+
+
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
 
                                     <div class="text-center">
 
                                         <button type="submit" style="background: rebeccapurple"
                                             class="get-started-btn">Confirm</button>
                                     </div>
-
-
-
                                 </div>
                             </form>
+
 
                         </div>
                     </div>
@@ -221,26 +149,48 @@ $payment = App\Models\PaymentMethod::where('user_id', 1)->get();
     <script>
         $('#step_1').on('change', function() {
             var step_1 = $("#step_1 option:selected").val();
-            console.log(selectedVal);
-            get(step_1, 'step_1')
+            console.log(step_1);
+            get('step_1', '', step_1)
+        });
+        $('#step_2').on('change', function() {
+
+            var step_1 = $("#step_2 option:selected").val();
+            var user_id = $("#step_2 option:selected").attr("tota_pakhi");
+            console.log(user_id);
+            get('step_2', user_id, step_1)
+        });
+        $('#step_3').on('change', function() {
+            var step_1 = $("#step_3 option:selected").val();
+            var user_id = $("#step_3 option:selected").attr("tota_pakhi");
+            console.log(user_id);
+            get('step_3', user_id, step_1)
         });
 
-        function get(id, data) {
+        function get(step, id = null, method_name) {
 
+            var step = step;
             var user_id = id;
-            var data = data;
+            var method_name = method_name;
             $.ajax({
                 url: '{{ route('payment.method') }}',
                 type: 'get',
                 data: {
-                    "user_id=" + user_id,
-                    "data": data,
+                    "step": step,
+                    "user_id": user_id,
+                    "method_name": method_name,
                 },
                 dataType: 'json',
                 success: function(data) {
-                    // console.log(data.output)
-                    $('#all_patient_confirm_list').html(data.output);
-                    $('#view_file_list').css('display', 'none');
+
+                    if (data.step == 'step_1') {
+                        $('#data-step-1').html(data.output);
+                    } else if (data.step == 'step_2') {
+                        $('#data-step-2').html(data.output);
+                    } else if (data.step == 'step_3') {
+                        $('#data-step-3').html(data.output);
+                    }
+
+
                 }
             });
         }

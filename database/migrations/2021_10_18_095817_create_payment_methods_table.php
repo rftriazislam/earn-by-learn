@@ -16,6 +16,7 @@ class CreatePaymentMethodsTable extends Migration
         Schema::create('payment_methods', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->string('role')->default('user');
             $table->string('method_name', 100);
             $table->string('account_number', 90);
             $table->string('account_name', 90);
