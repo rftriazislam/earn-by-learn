@@ -25,6 +25,9 @@ class UserController extends Controller
             }]);
         }])->where('id', Auth::user()->id)->first();
 
+
+
+
         if ($user->condition_check == 'check' && !empty($user->mentor->mentor_payment) && !empty($user->mentor->mentor->mentor_payment)) {
             return redirect()->route('register.final');
         } else {
