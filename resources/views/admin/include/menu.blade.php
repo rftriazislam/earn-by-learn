@@ -54,17 +54,11 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('parent.payment') }}" class="nav-link ">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Parent student</p>
-                            </a>
-                        </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('child.payment') }}" class="nav-link">
+                            <a href="{{ route('rafa.payment') }}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Child Student</p>
+                                <p>Payment student</p>
                             </a>
                         </li>
                     </ul>
