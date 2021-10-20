@@ -26,4 +26,8 @@ class PaymentDetail extends Model
         'm2_status',
         'status',
     ];
+    public function user_info()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 }

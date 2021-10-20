@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MethodName;
 use App\Models\PaymentDetail;
 use App\Models\PaymentMethod;
+use App\Models\StudentLevel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -13,9 +14,33 @@ use Auth;
 class UserController extends Controller
 {
 
+    protected function check()
+    {
+        $very = PaymentDetail::where('user_id', Auth::user()->id)->first();
+        if ($very) {
+            if ($very->status == 3) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+
     public function    user_dashboard()
     {
-        return view('user_panel.main.home');
+        $very = PaymentDetail::where('user_id', Auth::user()->id)->first();
+        if ($very) {
+            if ($very->status == 3) {
+                return view('user_panel.main.home');
+            } else {
+                return redirect()->route('register.final');
+            }
+        } else {
+            return redirect()->route('login');
+        }
     }
 
 
@@ -52,9 +77,11 @@ class UserController extends Controller
 
         $very = PaymentDetail::where('user_id', Auth::user()->id)->first();
         if ($very) {
-            if ($very->status == 3) {
+            if ($very->status == 2) {
                 // return redirect()->route('user.dashboard');
                 return redirect()->route('register.profile.update');
+            } elseif ($very->status == 3) {
+                return redirect()->route('user.dashboard');
             } else {
                 return view('user_panel.register.verify', compact('very'));
             }
@@ -133,8 +160,11 @@ class UserController extends Controller
         }])->where('id', Auth::user()->id)->first();
 
         $very = PaymentDetail::where('user_id', Auth::user()->id)->first();
-
-        return view('user_panel.register.check', compact('user', 'very'));
+        if ($very->status == 3) {
+            return redirect()->route('register.final');
+        } else {
+            return view('user_panel.register.check', compact('user', 'very'));
+        }
     }
     public function register_final_update(Request $request)
     {
@@ -239,9 +269,107 @@ class UserController extends Controller
         $method->account_name = $request->method_name;
 
         if ($method->save()) {
+            $update = PaymentDetail::where('user_id', Auth::user()->id)->first();
+            $update->update(['status' => 3]);
             return redirect()->route('user.dashboard');
         } else {
             return back();
+        }
+    }
+
+    public function parent_payment()
+    {
+        $user =  PaymentDetail::with('user_info')->where('first_mentor_id', Auth::user()->id)->get();
+
+        return view('user_panel.payment.parent_list', compact('user'));
+    }
+
+    public function parent_confirm($id)
+    {
+        $update = PaymentDetail::where('first_mentor_id', Auth::user()->id)->where('id', $id)->first();
+
+        if ($update) {
+            $update->update([
+                'm1_status' => 1
+            ]);
+            $data = StudentLevel::where('user_id', $update->user_id)->first();
+            if ($data) {
+                $data->update([
+                    'first_mentor_id' => Auth::user()->id
+                ]);
+            } else {
+                $student_level = new StudentLevel();
+                $student_level->user_id = $update->user_id;
+                $student_level->first_mentor_id = Auth::user()->id;
+                $student_level->save();
+            }
+            return back();
+        } else {
+            return  back();
+        }
+    }
+
+    public function parent_reject($id)
+    {
+        $update = PaymentDetail::where('first_mentor_id', Auth::user()->id)->where('id', $id)->first();
+
+        if ($update) {
+            $update->update([
+                'm1_status' => 2
+            ]);
+
+            return back();
+        } else {
+            return  back();
+        }
+    }
+
+
+
+    public function child_payment()
+    {
+        $user =  PaymentDetail::with('user_info')->where('second_mentor_id', Auth::user()->id)->get();
+        // dd($user);
+        return view('user_panel.payment.child_list', compact('user'));
+    }
+
+    public function child_confirm($id)
+    {
+        $update = PaymentDetail::where('second_mentor_id', Auth::user()->id)->where('id', $id)->first();
+
+        if ($update) {
+            $update->update([
+                'm2_status' => 1
+            ]);
+            $data = StudentLevel::where('user_id', $update->user_id)->first();
+            if ($data) {
+                $data->update([
+                    'second_mentor_id' => Auth::user()->id
+                ]);
+            } else {
+                $student_level = new StudentLevel();
+                $student_level->user_id = $update->user_id;
+                $student_level->second_mentor_id = Auth::user()->id;
+                $student_level->save();
+            }
+
+            return back();
+        } else {
+            return  back();
+        }
+    }
+
+    public function child_reject($id)
+    {
+        $update = PaymentDetail::where('second_mentor_id', Auth::user()->id)->where('id', $id)->first();
+
+        if ($update) {
+            $update->update([
+                'm2_status' => 2
+            ]);
+            return back();
+        } else {
+            return  back();
         }
     }
 }

@@ -559,6 +559,7 @@ class ComposerStaticInit9964f3dfbc2bc6a5dab2fa3e9b43d6bb
         'App\\Models\\MethodName' => __DIR__ . '/../..' . '/app/Models/MethodName.php',
         'App\\Models\\PaymentDetail' => __DIR__ . '/../..' . '/app/Models/PaymentDetail.php',
         'App\\Models\\PaymentMethod' => __DIR__ . '/../..' . '/app/Models/PaymentMethod.php',
+        'App\\Models\\StudentLevel' => __DIR__ . '/../..' . '/app/Models/StudentLevel.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

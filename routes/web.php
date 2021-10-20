@@ -44,8 +44,14 @@ Route::group(['middleware' => ['auth', 'user'],], function () {
     Route::post('/register-st-ts-update', [UserController::class, 'register_final_update'])->name('register.final.update');
     Route::get('/user/dashboard', [UserController::class, 'user_dashboard'])->name('user.dashboard');
     Route::get('/register-profile-update', [UserController::class, 'register_profile_update'])->name('register.profile.update');
-
     Route::post('/register-save-update', [UserController::class, 'register_save_update'])->name('register.save.update');
+
+    Route::get('/notification/parent', [UserController::class, 'parent_payment'])->name('parent.payment');
+    Route::get('/notification/parent-confirm/{id}', [UserController::class, 'parent_confirm'])->name('parent.confirm');
+    Route::get('/notification/parent-reject/{id}', [UserController::class, 'parent_reject'])->name('parent.reject');
+    Route::get('/notification/child', [UserController::class, 'child_payment'])->name('child.payment');
+    Route::get('/notification/child-confirm/{id}', [UserController::class, 'child_confirm'])->name('child.confirm');
+    Route::get('/notification/child-reject/{id}', [UserController::class, 'child_reject'])->name('child.reject');
 });
 
 Route::get('/payment-at-rz-method', [AjaxController::class, 'payment_method'])->name('payment.method');

@@ -41,7 +41,7 @@
                                     @elseif ($very->m1_status == 2)
                                         <div class="col-md-6" style="float: left">
                                             <button class="get-started-btn"
-                                                style="background:rgb(250, 4, 4);width:95%">Mentor Cancel</button>
+                                                style="background:rgb(250, 4, 4);width:95%">Mentor 1 Cancel</button>
                                         </div>
 
                                         <div class="col-md-6" style="float: left">
@@ -72,7 +72,7 @@
                                     @elseif ($very->m2_status == 2)
                                         <div class="col-md-6" style="float: left">
                                             <button class="get-started-btn" style="background:rgb(250, 4, 4);width:95%">
-                                                Mentor Cancel</button>
+                                                Mentor 2 Cancel</button>
                                         </div>
 
                                         <div class="col-md-6" style="float: left">
@@ -128,7 +128,15 @@
 
 
                             <div class="text-center php-email-form">
-                                <button type="submit" class="get-started-btn">Waiting </button>
+                                @if ($very->m1_status == 1 && $very->m2_status == 1 && $very->c_status == 1)
+                                    <a href="{{ route('register.final') }}"><button type="submit"
+                                            class="get-started-btn">Go Next </button></a>
+                                @else
+                                    <a href="{{ route('register.final') }}"><button type="submit" class="get-started-btn"
+                                            style="background:rgb(250, 4, 4);">Wait For Checking</button></a>
+
+                                @endif
+
 
                             </div>
 

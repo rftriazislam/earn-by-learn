@@ -34,6 +34,7 @@ return array(
     'App\\Models\\MethodName' => $baseDir . '/app/Models/MethodName.php',
     'App\\Models\\PaymentDetail' => $baseDir . '/app/Models/PaymentDetail.php',
     'App\\Models\\PaymentMethod' => $baseDir . '/app/Models/PaymentMethod.php',
+    'App\\Models\\StudentLevel' => $baseDir . '/app/Models/StudentLevel.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

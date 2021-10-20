@@ -102,7 +102,7 @@ $payment = App\Models\PaymentMethod::where('role', 'admin')->get();
                                                     @endforeach
                                                 </select>
 
-                                                <input name="second_mentor_id" value="{{ $user->refered_id }}"
+                                                <input name="second_mentor_id" value="{{ $user->mentor->refered_id }}"
                                                     type="hidden">
                                             </div>
                                         </div>
