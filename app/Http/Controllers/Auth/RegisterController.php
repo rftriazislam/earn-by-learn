@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\StudentLevel;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -104,7 +105,12 @@ class RegisterController extends Controller
         $lat = is_float($ip['latitude']);
         $lon = is_float($ip['longitude']);
 
+        // $check = StudentLevel::where('first_mentor_id', $data['refered_id'])->count();
+        // if ($check >= 10) {
 
+        //     dd('ggg');
+        // } else {
+        //     dd('ss');
         return User::create([
             'country' => $data['country'],
             'country_code' => $data['country_code'],
@@ -119,6 +125,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
+        // }
     }
     // protected function redirectTo()
     // {

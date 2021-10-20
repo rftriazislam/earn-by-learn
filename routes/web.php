@@ -34,6 +34,9 @@ Route::get('/logout-logout', [App\Http\Controllers\Auth\LoginController::class, 
 Route::group(['middleware' => ['auth', 'admin'],], function () {
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/notification/student', [AdminController::class, 'rafa_payment'])->name('rafa.payment');
+    Route::get('/notification/student-confirm/{id}', [AdminController::class, 'rafa_confirm'])->name('rafa.confirm');
+    Route::get('/notification/student-reject/{id}', [AdminController::class, 'rafa_reject'])->name('rafa.reject');
 });
 Route::group(['middleware' => ['auth', 'user'],], function () {
     Route::get('/user', [UserController::class, 'register_second_part'])->name('user');
