@@ -191,4 +191,40 @@
 
 @section('js')
     <script src="{{ asset('front_end/country/js/country_list/country.js') }}"></script>
+
+    {{-- <script>
+         $('#refered_id').on('change', function() {
+          
+            get('step_3', user_id, step_1)
+        });
+
+        function get(step, id = null, method_name) {
+
+            var step = step;
+            var user_id = id;
+            var method_name = method_name;
+            $.ajax({
+                url: '{{ route('payment.method') }}',
+                type: 'get',
+                data: {
+                    "step": step,
+                    "user_id": user_id,
+                    "method_name": method_name,
+                },
+                dataType: 'json',
+                success: function(data) {
+
+                    if (data.step == 'step_1') {
+                        $('#data-step-1').html(data.output);
+                    } else if (data.step == 'step_2') {
+                        $('#data-step-2').html(data.output);
+                    } else if (data.step == 'step_3') {
+                        $('#data-step-3').html(data.output);
+                    }
+
+
+                }
+            });
+        }
+    </script> --}}
 @endsection

@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\StudentLevel;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -30,7 +32,10 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/user';
+
+    // protected $redirectTo;
+
 
     /**
      * Create a new controller instance.
@@ -52,7 +57,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'country' => ['required', 'string', 'max:80'],
-            'refered_id' => ['nullable', 'exists:users,id'],
+            'refered_id' => ['required', 'exists:payment_details,user_id'],
             'state' => ['required', 'string', 'max:80'],
             'name' => ['required', 'string', 'max:120'],
             'phone' => ['required', 'string', 'max:21', 'unique:users,phone'],
@@ -99,11 +104,19 @@ class RegisterController extends Controller
         }
         $lat = is_float($ip['latitude']);
         $lon = is_float($ip['longitude']);
+
+        // $check = StudentLevel::where('first_mentor_id', $data['refered_id'])->count();
+        // if ($check >= 10) {
+
+        //     dd('ggg');
+        // } else {
+        //     dd('ss');
         return User::create([
             'country' => $data['country'],
             'country_code' => $data['country_code'],
             'state' => $data['state'],
             'currency' => $data['currency'],
+            'refered_id' => $data['refered_id'],
             'flag' => $data['flag'],
             'latitude' => ($lat == true) ? $ip['latitude'] : 'Null',
             'longitude' => ($lon == true) ? $ip['longitude'] : 'Null',
@@ -112,5 +125,15 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
+        // }
     }
+    // protected function redirectTo()
+    // {
+
+    //     if (Auth::user()->role == 'admin') {
+    //         return route('admin');
+    //     } elseif (Auth::user()->role == 'user') {
+    //         return route('user');
+    //     }
+    // }
 }

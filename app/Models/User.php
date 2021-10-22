@@ -50,6 +50,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\PaymentMethod', 'user_id', 'id');
     }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *
