@@ -100,7 +100,7 @@
                                         <div class="col-md-12">
                                             <input id="phone" type="text"
                                                 class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                                value="{{ old('phone') }}" required autocomplete="phone" autofocus
+                                                value="{{ old('phone') }}" required autocomplete="name" autofocus
                                                 placeholder="Your Phone Number">
 
                                             @error('phone')
@@ -144,29 +144,24 @@
                                         </div>
                                     </div>
 
+                                    @if ($id)
+                                        <div class="form-group ">
 
-                                    <div class="form-group ">
+                                            <div class="col-md-12">
+                                                <input id="refered_id" type="hidden"
+                                                    class="form-control @error('refered_id') is-invalid @enderror"
+                                                    name="refered_id" value="{{ $id }}" required
+                                                    autocomplete="name" autofocus placeholder="Refered ID">
 
-                                        <div class="col-md-12">
-                                            <input id="refered_id" type="number" class="form-control " required
-                                                autocomplete="name" autofocus placeholder="Referral ID">
-
-                                            @error('refered_id')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                                @error('refered_id')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group ">
-
-                                        <div class="col-md-12" id="open">
-
-                                        </div>
-                                    </div>
-
-
+                                    @endif
 
 
                                     <div class="text-center">
@@ -197,43 +192,39 @@
 @section('js')
     <script src="{{ asset('front_end/country/js/country_list/country.js') }}"></script>
 
-    <script>
-        $('#refered_id').keyup('change', function() {
-            var id = $("#refered_id").val();
-
-            if (id) {
-                // console.log(id)
-                get(id)
-            } else {
-                console.log('null')
-            }
-
+    {{-- <script>
+         $('#refered_id').on('change', function() {
+          
+            get('step_3', user_id, step_1)
         });
 
-        function get(id) {
+        function get(step, id = null, method_name) {
 
-
+            var step = step;
             var user_id = id;
-
+            var method_name = method_name;
             $.ajax({
-                url: '{{ route('check.referral') }}',
+                url: '{{ route('payment.method') }}',
                 type: 'get',
                 data: {
-                    "user_id": user_id
+                    "step": step,
+                    "user_id": user_id,
+                    "method_name": method_name,
                 },
                 dataType: 'json',
                 success: function(data) {
 
-                    if (data.message == true) {
-                        $('#open').html(data.output);
-                    } else {
-                        $('#open').html(data.output);
+                    if (data.step == 'step_1') {
+                        $('#data-step-1').html(data.output);
+                    } else if (data.step == 'step_2') {
+                        $('#data-step-2').html(data.output);
+                    } else if (data.step == 'step_3') {
+                        $('#data-step-3').html(data.output);
                     }
-
 
 
                 }
             });
         }
-    </script>
+    </script> --}}
 @endsection

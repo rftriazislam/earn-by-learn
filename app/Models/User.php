@@ -52,6 +52,13 @@ class User extends Authenticatable
     }
 
 
+    public function student_level()
+    {
+        return $this->hasOne('App\Models\StudentLevel', 'user_id', 'id')
+            ->where('first_mentor_id', '!=', NUll)
+            ->where('second_mentor_id', '!=', NUll)
+            ->where('admin', '!=', NUll);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

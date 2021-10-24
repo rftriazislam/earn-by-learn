@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\AffiliateController;
 use App\Http\Controllers\Ajax\AjaxController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\FrontEnd\FrontendController;
@@ -29,6 +30,8 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout-logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
+Route::get('/learn-ria-earn-{id}-world-by-{sa}', [AffiliateController::class, 'referral_link']);
+
 
 
 Route::group(['middleware' => ['auth', 'admin'],], function () {
@@ -55,6 +58,10 @@ Route::group(['middleware' => ['auth', 'user'],], function () {
     Route::get('/notification/child', [UserController::class, 'child_payment'])->name('child.payment');
     Route::get('/notification/child-confirm/{id}', [UserController::class, 'child_confirm'])->name('child.confirm');
     Route::get('/notification/child-reject/{id}', [UserController::class, 'child_reject'])->name('child.reject');
+    Route::get('/affiliate-link', [UserController::class, 'affiliate_link'])->name('affiliate-link');
 });
 
+
 Route::get('/payment-at-rz-method', [AjaxController::class, 'payment_method'])->name('payment.method');
+
+Route::get('/check-referral', [AjaxController::class, 'referral'])->name('check.referral');

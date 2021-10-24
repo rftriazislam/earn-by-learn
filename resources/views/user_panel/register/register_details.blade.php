@@ -28,9 +28,9 @@
                     <div class="card">
 
                         <div class="card-body">
+                            <p>You have to purchase course <b> Digital Marketing & Freclancing </b></p>
 
-                            <p>You have to purchase course Digital Marketing & Freclancing course fee : $ 25 Online Lecture
-                                + 2 Mentors</p>
+                            <p> Course fee : <b> $ 25 [ Online Lecture + 2 Mentors ] </b></p>
                             <ul>
                                 <li>Step-01: Send $ 10 [Video Lecture]</li>
                                 <li>Step-02: Send $ 10 [Mentor-01]</li>

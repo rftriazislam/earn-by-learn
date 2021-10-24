@@ -38,18 +38,19 @@
 
                 <li class="nav-item has-treeview ">
                     <a href="" class="nav-link ">
-                        <i class="fas fa-user nav-icon"></i>
+                        <i class="nav-icon fas fa-list"></i>
                         <p>
-                            My student
+                            Become A Merchant
                         </p>
                     </a>
 
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
-                        <i class="nav-icon fas fa-list"></i>
+
+                        <i class="fas fa-user nav-icon"></i>
                         <p>
-                            Notification
+                            My Student
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -57,14 +58,14 @@
                         <li class="nav-item">
                             <a href="{{ route('parent.payment') }}" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Parent student</p>
+                                <p>Batch-01</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="{{ route('child.payment') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Child Student</p>
+                                <p>Batch-02</p>
                             </a>
                         </li>
 
@@ -121,6 +122,16 @@
                         <i class="fas fa-plus nav-icon"></i>
                         <p>
                             Doopshiping
+                        </p>
+                    </a>
+
+                </li>
+
+                <li class="nav-item has-treeview ">
+                    <a href="{{ route('affiliate-link') }}" class="nav-link ">
+                        <i class="fas fa-plus nav-icon"></i>
+                        <p>
+                            Affiliate Link
                         </p>
                     </a>
 

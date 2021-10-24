@@ -303,6 +303,16 @@ class UserController extends Controller
                 $student_level->first_mentor_id = Auth::user()->id;
                 $student_level->save();
             }
+            if ($update->c_status == 1 && $update->m1_status == 1 && $update->m2_status == 1) {
+                $update->update([
+                    'status' => 3
+                ]);
+                $user = User::where('id', Auth::user()->id)->first();
+                $user->update([
+                    'status' => 1
+                ]);
+            }
+
             return back();
         } else {
             return  back();
@@ -352,7 +362,15 @@ class UserController extends Controller
                 $student_level->second_mentor_id = Auth::user()->id;
                 $student_level->save();
             }
-
+            if ($update->c_status == 1 && $update->m1_status == 1 && $update->m2_status == 1) {
+                $update->update([
+                    'status' => 3
+                ]);
+                $user = User::where('id', Auth::user()->id)->first();
+                $user->update([
+                    'status' => 1
+                ]);
+            }
             return back();
         } else {
             return  back();
@@ -371,5 +389,12 @@ class UserController extends Controller
         } else {
             return  back();
         }
+    }
+
+    public function affiliate_link()
+    {
+
+        $v = url('/learn-ria-earn') . "-" . Auth::user()->id . "-world-by-" . Auth::user()->id;
+        return $v;
     }
 }

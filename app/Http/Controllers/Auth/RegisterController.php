@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'refered_id' => ['required', 'exists:payment_details,user_id'],
             'state' => ['required', 'string', 'max:80'],
             'name' => ['required', 'string', 'max:120'],
-            'phone' => ['required', 'string', 'max:21', 'unique:users,phone'],
+            'phone' => ['required', 'string', 'max:21'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
