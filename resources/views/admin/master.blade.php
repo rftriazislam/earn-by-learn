@@ -31,12 +31,12 @@
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
-        @include('user_panel.include.nav')
-        @include('user_panel.include.menu')
+        @include('admin.include.nav')
+        @include('admin.include.menu')
 
         @yield('content')
 
-        @include('user_panel.include.footer')
+        @include('admin.include.footer')
 
         <!-- REQUIRED SCRIPTS -->
         <!-- jQuery -->

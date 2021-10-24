@@ -1,4 +1,4 @@
-@extends('user_panel.master')
+@extends('admin.master')
 @section('content')
 
 
@@ -27,7 +27,10 @@
                                             <th>Payment Method</th>
                                             <th>A/C Number</th>
                                             <th>Amount</th>
-                                            <th>Picture</th <th>Status</th>
+                                            <th>Picture</th>
+                                            <th>Payment Complete</th>
+
+                                            <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -49,6 +52,23 @@
                                                             src="{{ asset('public/storage/upload') }}/{{ $item->upload_screenshort }}"
                                                             style="height: 50px;width:60px"> </a>
                                                 </td>
+                                                <td>
+                                                    @if ($item->c_status == 1)
+                                                        <a class="btn btn-success btn-sm" style="color:white"> Admin
+                                                        </a>
+                                                    @endif
+                                                    @if ($item->m1_status == 1)
+                                                        <a class="btn btn-info btn-sm" style="color:white"> Mentor 1
+                                                        </a>
+                                                    @endif
+                                                    @if ($item->m2_status == 1)
+                                                        <a class="btn btn-secondary btn-sm" style="color:white"> Mentor 2
+                                                        </a>
+                                                    @endif
+
+
+                                                </td>
+
                                                 <td>
                                                     @if ($item->c_status == 1)
                                                         <a class="btn btn-success btn-sm" style="color:white">Got Money

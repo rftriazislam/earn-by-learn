@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Ajax;
 
 use App\Http\Controllers\Controller;
 use App\Models\PaymentMethod;
+use App\Models\StudentLevel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -66,6 +67,45 @@ class AjaxController extends Controller
 
 
 
+        echo json_encode($data);
+    }
+
+
+    public function referral(Request $request)
+    {
+        $id = $request->user_id;
+        $num = is_numeric($id);
+        if ($num == true) {
+            $id = $id;
+            $use =   User::with('student_level')->where('id', $id)->first();
+
+            if (empty($use->student_level)) {
+
+                $output = '<h4 style="color:red">Invalid Referral ID</h4>';
+                $mes = false;
+            } else {
+                $check = StudentLevel::where('first_mentor_id', $id)->count();
+                if ($check < 10) {
+                    $output = '
+                   <input type="hidden" name="refered_id"  value="' . $id . '"  required
+                    autocomplete="name" autofocus placeholder="Refered ID">';
+                    $mes = true;
+                } else {
+                    $output = '<h4 style="color:red">Use another referral ID</h4>';
+                    $mes = false;
+                }
+            }
+        } else {
+            $output = '<h4 style="color:red">Invalid referral ID</h4>';
+            $mes = false;
+        }
+
+
+
+        $data = array(
+            'output'  => $output,
+            'message'  => $mes
+        );
         echo json_encode($data);
     }
 }

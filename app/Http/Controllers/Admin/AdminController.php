@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\PaymentDetail;
 use App\Models\StudentLevel;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -39,6 +40,15 @@ class AdminController extends Controller
                 $student_level->user_id = $update->user_id;
                 $student_level->admin = 'success';
                 $student_level->save();
+            }
+            if ($update->c_status == 1 && $update->m1_status == 1 && $update->m2_status == 1) {
+                $update->update([
+                    'status' => 3
+                ]);
+                $user = User::where('id', Auth::user()->id)->first();
+                $user->update([
+                    'status' => 1
+                ]);
             }
             return back();
         } else {
