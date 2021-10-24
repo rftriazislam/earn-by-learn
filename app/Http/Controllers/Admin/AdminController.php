@@ -7,6 +7,7 @@ use App\Models\PaymentDetail;
 use App\Models\StudentLevel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class AdminController extends Controller
 {
