@@ -44,7 +44,7 @@
                                                 <td>{{ $item->method_name }}</td>
                                                 <td>{{ $item->account_number }}</td>
 
-                                                <td>$10</td>
+                                                <td><b style="color:red">{{ Helper::money_convert('USD', 10) }}</b></td>
 
                                                 <td>
                                                     <a

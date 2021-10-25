@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\ExchangeRate;
 use App\Models\MethodName;
 use App\Models\PaymentDetail;
 use App\Models\PaymentMethod;
@@ -13,6 +14,22 @@ use Auth;
 
 class UserController extends Controller
 {
+
+    public function money_convert($currency, $price)
+    {
+        $currecny_user = $currency;
+
+        $exchange_user = ExchangeRate::where('rates', $currecny_user)->first();
+        $price_user = $price / $exchange_user->money;
+
+        $social = User::select('currency')->where('id', Auth::user()->id)->first();
+        $currecny = $social->currency;
+        $exchange = ExchangeRate::where('rates', $currecny)->first();
+        $prc = $price_user * $exchange->money;
+
+        $price_product =  round($prc, 2) . ' ' .     $exchange->rates;
+        return $price_product;
+    }
 
     protected function check()
     {
@@ -47,6 +64,8 @@ class UserController extends Controller
     public function register_second_part()
 
     {
+
+
         $user = User::with(['mentor' => function ($q) {
             $q->select('id', 'refered_id')->with('mentor_payment:id,user_id,method_name')->with(['mentor' => function ($q) {
                 $q->select('id', 'refered_id')->with(['mentor_payment:id,user_id,method_name']);
@@ -56,6 +75,7 @@ class UserController extends Controller
         if ($user->condition_check == 'check' && !empty($user->mentor->mentor_payment) && !empty($user->mentor->mentor->mentor_payment)) {
             return redirect()->route('register.final');
         } else {
+
             return view('user_panel.register.register_details');
         }
     }
@@ -305,7 +325,7 @@ class UserController extends Controller
             }
             if ($update->c_status == 1 && $update->m1_status == 1 && $update->m2_status == 1) {
                 $update->update([
-                    'status' => 3
+                    'status' => 2
                 ]);
                 $user = User::where('id', Auth::user()->id)->first();
                 $user->update([
@@ -364,7 +384,7 @@ class UserController extends Controller
             }
             if ($update->c_status == 1 && $update->m1_status == 1 && $update->m2_status == 1) {
                 $update->update([
-                    'status' => 3
+                    'status' => 2
                 ]);
                 $user = User::where('id', Auth::user()->id)->first();
                 $user->update([

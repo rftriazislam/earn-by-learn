@@ -27,7 +27,7 @@
                                             <th>Payment Method</th>
                                             <th>A/C Number</th>
                                             <th>Amount</th>
-                                            <th>Picture</th <th>Status</th>
+                                            <th>Picture</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -35,13 +35,13 @@
 
                                         @foreach ($user as $item)
                                             <tr>
-                                                <td>{{ $item->user_id }}</td>
+                                                <td>#{{ $item->user_id }}</td>
                                                 <td>{{ $item->user_info->name }}</td>
                                                 <td>{{ $item->user_info->phone }}</td>
                                                 <td>{{ $item->first_method_name }}</td>
                                                 <td>{{ $item->first_account_number }}</td>
 
-                                                <td>$10</td>
+                                                <td><b style="color:red">{{ Helper::money_convert('USD', 10) }}</b></td>
 
                                                 <td>
                                                     <a

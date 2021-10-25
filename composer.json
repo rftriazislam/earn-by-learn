@@ -26,7 +26,12 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/helperClass/moneyExchange.php"
+        ]
+
+
     },
     "autoload-dev": {
         "psr-4": {
@@ -60,4 +65,5 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true
+    
 }
