@@ -37,19 +37,19 @@
 
 
                 <li class="nav-item has-treeview ">
-                    <a href="" class="nav-link ">
-                        <i class="fas fa-user nav-icon"></i>
+                    <a href="{{ route('payment_method') }}" class="nav-link ">
+                        <i class="fas fa-plus nav-icon"></i>
                         <p>
-                            My student
+                            Setup Payment Method
                         </p>
                     </a>
 
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link ">
-                        <i class="nav-icon fas fa-list"></i>
+                        <i class="fas fa-user nav-icon"></i>
                         <p>
-                            Notification
+                            All Student
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -63,66 +63,50 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="nav-item has-treeview ">
-                    <a href="" class="nav-link ">
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link ">
                         <i class="fas fa-book nav-icon"></i>
                         <p>
                             Course
+                            <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
 
+                        <li class="nav-item">
+                            <a href="{{ route('add_course') }}" class="nav-link ">
+                                <i class="fas fa-book nav-icon"></i>
+                                <p>
+                                    Add Course
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link ">
+                                <i class="fas fa-book nav-icon"></i>
+                                <p>
+                                    Course List
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="nav-item has-treeview ">
-                    <a href="" class="nav-link ">
-                        <i class="fas fa-home nav-icon"></i>
-                        <p>
-                            Digital Marketplace
-                        </p>
-                    </a>
 
-                </li>
-                <li class="nav-item has-treeview ">
-                    <a href="" class="nav-link ">
-                        <i class="fas fa-plus nav-icon"></i>
-                        <p>
-                            Freelancing
-                        </p>
-                    </a>
 
-                </li>
-                <li class="nav-item has-treeview ">
-                    <a href="" class="nav-link ">
-                        <i class="fas fa-plus nav-icon"></i>
-                        <p>
-                            Work Place
-                        </p>
-                    </a>
-
-                </li>
-                <li class="nav-item has-treeview ">
-                    <a href="" class="nav-link ">
-                        <i class="fas fa-plus nav-icon"></i>
-                        <p>
-                            Reedem
-                        </p>
-                    </a>
-
-                </li>
-                <li class="nav-item has-treeview ">
-                    <a href="" class="nav-link ">
-                        <i class="fas fa-plus nav-icon"></i>
-                        <p>
-                            Doopshiping
-                        </p>
-                    </a>
-
-                </li>
                 <li class="nav-item has-treeview ">
                     <a href="{{ route('logout') }}" class="nav-link ">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
                             logout
+                        </p>
+                    </a>
+
+                </li>
+                <li class="nav-item has-treeview ">
+                    <a href="{{ route('moneyexchange') }}" class="nav-link ">
+                        <i class="fas fa-plus nav-icon"></i>
+                        <p>
+                            Current Exchange Rate
                         </p>
                     </a>
 

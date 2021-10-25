@@ -40,6 +40,12 @@ Route::group(['middleware' => ['auth', 'admin'],], function () {
     Route::get('/notification/student', [AdminController::class, 'rafa_payment'])->name('rafa.payment');
     Route::get('/notification/student-confirm/{id}', [AdminController::class, 'rafa_confirm'])->name('rafa.confirm');
     Route::get('/notification/student-reject/{id}', [AdminController::class, 'rafa_reject'])->name('rafa.reject');
+
+    Route::get('/currency-convert-upload', [AdminController::class, 'currency_convert_upload'])->name('moneyexchange');
+    Route::get('/payment/payment-method', [AdminController::class, 'payment_method'])->name('payment_method');
+    Route::post('/payment/save-method', [AdminController::class, 'save_method'])->name('save_method');
+
+    Route::get('/course/add-course', [AdminController::class, 'add_course'])->name('add_course');
 });
 Route::group(['middleware' => ['auth', 'user'],], function () {
     Route::get('/user', [UserController::class, 'register_second_part'])->name('user');

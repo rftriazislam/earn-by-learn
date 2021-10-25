@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MethodName extends Model
+class ExchangeRate extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
-        'method_name',
-        'status',
+        'id', 'rates', 'money',
         'updated_at'
     ];
 }

@@ -41,13 +41,15 @@ $payment = App\Models\PaymentMethod::where('role', 'admin')->get();
                                 <div class="row">
                                     <div
                                         style="border: 3px solid #5fcf80;    margin-bottom: 13px;border-radius: 16px;    padding: 13px;">
-                                        <h4>Step 1 : Send $10 (800 BDT) Video Lecture </h4>
+                                        <h4 style="font-family:'' ">Step 1 : Send $10 (<b
+                                                style="color:red">{{ Helper::money_convert('USD', 10) }}</b>) Video
+                                            Lecture </h4>
                                         <div class="form-group ">
 
                                             <div class="col-md-6">
                                                 <select name="method_name" id="step_1"
                                                     class="form-control @error('country') is-invalid @enderror" required>
-                                                    <option disabled selected value=''>Payment Method</option>
+                                                    <option disabled selected value=''>Select Payment Method</option>
                                                     @foreach ($payment as $item)
                                                         <option value="{{ $item->method_name }}">
                                                             {{ $item->method_name }}</option>
@@ -63,13 +65,15 @@ $payment = App\Models\PaymentMethod::where('role', 'admin')->get();
                                     <br>
                                     <div
                                         style="border: 3px solid #5fcf80;    margin-bottom: 13px;border-radius: 16px;    padding: 13px;">
-                                        <h4>Step 2 : Send $10 (800 BDT) Mentor-1 </h4>
+                                        <h4 style="font-family:'' ">Step 2 : Send $10 (<b
+                                                style="color:red">{{ Helper::money_convert('USD', 10) }}</b>) Mentor-1
+                                        </h4>
                                         <div class="form-group ">
 
                                             <div class="col-md-6">
                                                 <select name="first_method_name" id="step_2"
                                                     class="form-control @error('country') is-invalid @enderror" required>
-                                                    <option disabled selected value=''>Payment Method</option>
+                                                    <option disabled selected value=''>Select Payment Method</option>
 
                                                     @foreach ($user->mentor->mentor_payment as $item)
                                                         <option tota_pakhi="{{ $user->refered_id }}"
@@ -87,13 +91,15 @@ $payment = App\Models\PaymentMethod::where('role', 'admin')->get();
                                     <br>
                                     <div
                                         style="border: 3px solid #5fcf80;    margin-bottom: 13px;border-radius: 16px;    padding: 13px;">
-                                        <h4>Step 3 : Send $5 (400 BDT) Mentor-2</h4>
+                                        <h4 style="font-family:'' ">Step 3 : Send $5 (<b
+                                                style="color:red">{{ Helper::money_convert('USD', 5) }}</b>) Mentor-2
+                                        </h4>
                                         <div class="form-group ">
 
                                             <div class="col-md-6">
                                                 <select name="second_method_name" id="step_3"
                                                     class="form-control @error('country') is-invalid @enderror" required>
-                                                    <option disabled selected value=''>Payment Method</option>
+                                                    <option disabled selected value=''>Select Payment Method</option>
 
                                                     @foreach ($user->mentor->mentor->mentor_payment as $item)
                                                         <option tota_pakhi="{{ $user->mentor->refered_id }}"

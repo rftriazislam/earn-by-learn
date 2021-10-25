@@ -32,9 +32,13 @@
 
                             <p> Course fee : <b> $ 25 [ Online Lecture + 2 Mentors ] </b></p>
                             <ul>
-                                <li>Step-01: Send $ 10 [Video Lecture]</li>
-                                <li>Step-02: Send $ 10 [Mentor-01]</li>
-                                <li>Step-03: Send $ 5 [Mentor-02]</li>
+                                <li>Step-01: Send $ 10 (<b style="color:red">{{ Helper::money_convert('USD', 10) }}</b>)
+                                    [Video Lecture]
+                                </li>
+                                <li>Step-02: Send $ 10 (<b style="color:red">{{ Helper::money_convert('USD', 10) }}</b>)
+                                    [Mentor-01]</li>
+                                <li>Step-03: Send $ 5 (<b style="color:red">{{ Helper::money_convert('USD', 5) }}</b>)
+                                    [Mentor-02]</li>
                                 <li>Step-04: Complete Your profile</li>
                             </ul>
                             <form action="{{ route('register.next') }}" method="post" class="php-email-form">
