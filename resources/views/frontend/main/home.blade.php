@@ -90,14 +90,14 @@
                     <div class="content">
                         <h3>Why Choose Mentor?</h3>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                            Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus
-                            optio ad corporis.
+                            Mentors will help you to learn accurately. When you learn perfectly , You will also become a
+                            mentor. Students will follow your instructiuons.
+                            It is a great opportunity to learn. Though the course is in English Language, The Mentors will
+                            help learners through local Language.
                         </p>
-                        <div class="text-center">
+                        {{-- <div class="text-center">
                             <a href="about.html" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-lg-8 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
@@ -106,25 +106,22 @@
                             <div class="col-xl-4 d-flex align-items-stretch">
                                 <div class="icon-box mt-4 mt-xl-0">
                                     <i class="bx bx-receipt"></i>
-                                    <h4>Corporis voluptates sit</h4>
-                                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
-                                        aliquip</p>
+                                    <h4>Expert Mentors</h4>
+                                    <p>Expert Mentors will teach you become a Enterprenure and Expert Mentors.</p>
                                 </div>
                             </div>
                             <div class="col-xl-4 d-flex align-items-stretch">
                                 <div class="icon-box mt-4 mt-xl-0">
                                     <i class="bx bx-cube-alt"></i>
-                                    <h4>Ullamco laboris ladore pan</h4>
-                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                        deserunt</p>
+                                    <h4>Great Opportunity</h4>
+                                    <p>A widespread field and way which help you become a successful Enterprenure.</p>
                                 </div>
                             </div>
                             <div class="col-xl-4 d-flex align-items-stretch">
                                 <div class="icon-box mt-4 mt-xl-0">
                                     <i class="bx bx-images"></i>
-                                    <h4>Labore consequatur</h4>
-                                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis
-                                        facere</p>
+                                    <h4>Be Enterprenure</h4>
+                                    <p>To be Enterprenure, You will get all kinds of Supports from Mentors</p>
                                 </div>
                             </div>
                         </div>
@@ -230,16 +227,16 @@
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="course-item">
-                        <img src="{{ asset('front_end') }}/assets/img/course-1.jpg" class="img-fluid" alt="...">
+                        <img src="{{ asset('front_end') }}/assets/img/course11.jpg" class="img-fluid" alt="...">
                         <div class="course-content">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4>Web Development</h4>
-                                <p class="price">$169</p>
+                                <h4>Digital Marketing</h4>
+                                <p class="price">$149</p>
                             </div>
 
-                            <h3><a href="course-details.html">Website Design</a></h3>
-                            <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                                dolores dolorem tempore.</p>
+                            <h3><a href="course-details.html">Email, SMM, Youtube, SEO, Facebook .</a></h3>
+                            <p>Grow your business with Digital Marketing Skill, make you a successful Leader in the Future.
+                            </p>
                             <div class="trainer d-flex justify-content-between align-items-center">
                                 <div class="trainer-profile d-flex align-items-center">
                                     <img src="{{ asset('front_end') }}/assets/img/trainers/trainer-1.jpg"
@@ -258,16 +255,16 @@
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
                     <div class="course-item">
-                        <img src="{{ asset('front_end') }}/assets/img/course-2.jpg" class="img-fluid" alt="...">
+                        <img src="{{ asset('front_end') }}/assets/img/course12.jpg" class="img-fluid" alt="...">
                         <div class="course-content">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4>Marketing</h4>
-                                <p class="price">$250</p>
+                                <h4>Dropshipping</h4>
+                                <p class="price">$119</p>
                             </div>
 
-                            <h3><a href="course-details.html">Search Engine Optimization</a></h3>
-                            <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                                dolores dolorem tempore.</p>
+                            <h3><a href="course-details.html">Stocklot, Amazon, Alibaba.</a></h3>
+                            <p>In 2021, secure your financial future, by building a highly profitable dropshipping business
+                                from home. </p>
                             <div class="trainer d-flex justify-content-between align-items-center">
                                 <div class="trainer-profile d-flex align-items-center">
                                     <img src="{{ asset('front_end') }}/assets/img/trainers/trainer-2.jpg"
@@ -286,16 +283,16 @@
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
                     <div class="course-item">
-                        <img src="{{ asset('front_end') }}/assets/img/course-3.jpg" class="img-fluid" alt="...">
+                        <img src="{{ asset('front_end') }}/assets/img/course13.jpg" class="img-fluid" alt="...">
                         <div class="course-content">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4>Content</h4>
-                                <p class="price">$180</p>
+                                <h4>Entrepreneur</h4>
+                                <p class="price">$139</p>
                             </div>
 
-                            <h3><a href="course-details.html">Copywriting</a></h3>
-                            <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                                dolores dolorem tempore.</p>
+                            <h3><a href="course-details.html">Intro to Entrepreneurship .</a></h3>
+                            <p>Learn Everything you need to know to become an entrepreneur. Master the concepts and coming
+                                up with great business ideas. </p>
                             <div class="trainer d-flex justify-content-between align-items-center">
                                 <div class="trainer-profile d-flex align-items-center">
                                     <img src="{{ asset('front_end') }}/assets/img/trainers/trainer-3.jpg"
@@ -324,8 +321,7 @@
             <div class="row" data-aos="zoom-in" data-aos-delay="100">
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="member">
-                        <img src="{{ asset('front_end') }}/assets/img/trainers/trainer-1.jpg" class="img-fluid"
-                            alt="">
+                        <img src="{{ asset('front_end') }}/assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
                         <div class="member-content">
                             <h4>Walter White</h4>
                             <span>Web Development</span>
@@ -345,8 +341,7 @@
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="member">
-                        <img src="{{ asset('front_end') }}/assets/img/trainers/trainer-2.jpg" class="img-fluid"
-                            alt="">
+                        <img src="{{ asset('front_end') }}/assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
                         <div class="member-content">
                             <h4>Sarah Jhinson</h4>
                             <span>Marketing</span>
@@ -366,8 +361,7 @@
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="member">
-                        <img src="{{ asset('front_end') }}/assets/img/trainers/trainer-3.jpg" class="img-fluid"
-                            alt="">
+                        <img src="{{ asset('front_end') }}/assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
                         <div class="member-content">
                             <h4>William Anderson</h4>
                             <span>Content</span>
