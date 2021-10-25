@@ -46,6 +46,8 @@ Route::group(['middleware' => ['auth', 'admin'],], function () {
     Route::post('/payment/save-method', [AdminController::class, 'save_method'])->name('save_method');
 
     Route::get('/course/add-course', [AdminController::class, 'add_course'])->name('add_course');
+
+    Route::post('/course/save-course', [AdminController::class, 'save_course'])->name('save.course');
 });
 Route::group(['middleware' => ['auth', 'user'],], function () {
     Route::get('/user', [UserController::class, 'register_second_part'])->name('user');

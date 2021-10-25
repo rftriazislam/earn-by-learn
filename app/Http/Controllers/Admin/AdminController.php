@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\ExchangeRate;
 use App\Models\MethodName;
 use App\Models\PaymentDetail;
@@ -138,6 +139,35 @@ class AdminController extends Controller
 
     public function add_course()
     {
-        return view('admin.course.create');
+        $data = Course::paginate(10);
+        return view('admin.course.create', compact('data'));
+    }
+    public function save_course(Request $request)
+    {
+        $validate = $this->validate($request, [
+            'course' => 'required',
+            'lecture' => 'required',
+            'section' => 'required',
+            'file' => 'required|mimes:mp4,ogx,oga,ogv,ogg,webm',
+        ]);
+
+
+        if ($request->hasFile('file')) {
+            $video = $request->file('file');
+            $dimensions = $video->getClientOriginalExtension();
+
+            $videoname = time() . uniqid() . '.' . $dimensions;
+            $destinationPath = public_path('/storage/course/');
+            $video->move($destinationPath, $videoname);
+            $validate['file'] =   $videoname;
+        }
+
+
+        $create = Course::create($validate);
+        if ($create) {
+            return back();
+        } else {
+            return back();
+        }
     }
 }

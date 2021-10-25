@@ -30,15 +30,29 @@
                         @endif
 
 
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('save.course') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="card-body">
 
+                                <div class="form-group">
+                                    <label>Course</label>
+                                    <select class="form-control" name="course">
+                                        <option value="Digital">Digital</option>
+                                        <option value="Outsourcing">Outsourcing</option>
+                                        <option value="Freelancing">Freelancing</option>
+                                    </select>
+                                </div>
 
                                 <div class="form-group">
-                                    <label for="inputClientCompany">Course Title </label>
-                                    <input type="text" name="title" class="form-control" required
+                                    <label for="inputClientCompany">Section Name</label>
+                                    <input type="text" name="section" class="form-control" required
+                                        placeholder="Name of video">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputClientCompany">Lecture Name</label>
+                                    <input type="text" name="lecture" class="form-control" required
                                         placeholder="Name of video">
                                 </div>
                                 <div class="form-group">
@@ -69,13 +83,42 @@
                                     <tr>
                                         <th>Id</th>
 
-                                        <th>Title</th>
+                                        <th>Course</th>
+                                        <th>Section</th>
+                                        <th>Lecture</th>
                                         <th>Video/MP4</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($data as $item)
+                                        <tr>
+                                            <td>#{{ $item->id }}</td>
+                                            <td>{{ $item->course }}</td>
+                                            <td>{{ $item->section }}</td>
+                                            <td>{{ $item->lecture }}</td>
+                                            <td> <video width="100" height="100" controls class="thumb"
+                                                    data-full="{{ asset('public/storage/course') }}/{{ $item->file }}">
+                                                    <source
+                                                        src="{{ asset('public/storage/course') }}/{{ $item->file }}">
+                                                </video>
+                                            </td>
+                                            <td>
+                                                @if ($item->status == 1)
+                                                    <a class="btn btn-success btn-sm" style="color:white"> Active
+                                                    </a>
 
+                                                @else
+                                                    <a class="btn btn-danger btn-sm" style="color:white"> OFF
+                                                    </a>
+
+                                                @endif
+
+
+                                            </td>
+                                        </tr>
+
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
