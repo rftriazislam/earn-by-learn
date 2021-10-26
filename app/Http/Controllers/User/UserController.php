@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\ExchangeRate;
 use App\Models\MethodName;
 use App\Models\PaymentDetail;
@@ -415,6 +416,34 @@ class UserController extends Controller
     {
 
         $v = url('/learn-ria-earn') . "-" . Auth::user()->id . "-world-by-" . Auth::user()->id;
-        return $v;
+        return view('user_panel.affiliate.affiliate', compact('v'));
+    }
+
+
+    public function user_course()
+    {
+        return view('user_panel.course.view');
+    }
+
+    public function course_single_view($id)
+    {
+        $course = Course::where('course', $id)->get();
+        if ($course) {
+            $play = Course::where('course', $id)->first();
+            return view('user_panel.course.single_view', compact('course', 'play'));
+        } else {
+            return back();
+        }
+    }
+
+    public function course_play($id)
+    {
+        $play = Course::where('id', $id)->first();
+        if ($play) {
+            $course = Course::where('course', $play->course)->get();
+            return view('user_panel.course.single_view', compact('course', 'play'));
+        } else {
+            return back();
+        }
     }
 }

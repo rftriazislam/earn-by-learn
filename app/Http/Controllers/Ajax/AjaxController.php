@@ -23,7 +23,7 @@ class AjaxController extends Controller
         if ($request->user_id == null) {
             $payment = PaymentMethod::where('role', 'admin')->where('method_name', $request->method_name)->first();
         } else {
-            $payment = PaymentMethod::where('role', 'user')->where('method_name', $request->method_name)->first();
+            $payment = PaymentMethod::where('role', 'user')->where('user_id', $request->user_id)->where('method_name', $request->method_name)->first();
         }
 
 

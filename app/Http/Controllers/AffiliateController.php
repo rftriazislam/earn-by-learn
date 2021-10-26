@@ -8,8 +8,16 @@ use Illuminate\Http\Request;
 
 class AffiliateController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+
     public function referral_link($id)
     {
+
+
         $num = is_numeric($id);
         if ($num == true) {
             $id = $id;

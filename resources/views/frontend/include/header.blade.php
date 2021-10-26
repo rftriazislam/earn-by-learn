@@ -33,12 +33,24 @@
                             <li><a href="#">Drop Down 4</a></li>
                         </ul>
                     </li>
+
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
 
-            <a href="{{ route('login') }}" class="get-started-btn">Login</a>
+            @auth
+                <a href="{{ route('logout') }}" class="get-started-btn" style="background: var(--bs-purple);">Logout</a>
+
+            @else
+                <a href="{{ route('login') }}" class="get-started-btn">Login</a>
+            @endauth
+
+
+
+
+
+
 
         </div>
     </header><!-- End Header -->
