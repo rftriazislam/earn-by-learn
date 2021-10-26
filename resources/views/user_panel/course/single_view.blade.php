@@ -38,7 +38,7 @@
                                     <tr @if ($item->id == $play->id) style="background:#cccccc" @endif>
 
                                         <td>
-                                            #{{ $item->id }}
+                                            #{{ $loop->index++ }}
                                         </td>
                                         <td>
                                             <h5> {{ $item->section }}</h5>

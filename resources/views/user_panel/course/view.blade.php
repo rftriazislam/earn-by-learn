@@ -22,7 +22,7 @@
                     <a href="{{ route('course.single.view', ['Digital']) }}">
                         <img src="{{ asset('front_end') }}/assets/img/course11.jpg" class="img-fluid" alt="..."></a>
                     <h3 style="float: left">Marketing</h3>
-                    <h3 style="float: right">Total (4 video)</h3>
+                    <h3 style="float: right">Total ({{ Helper::count_course('Digital') }} video)</h3>
 
                 </div>
                 <div class="col-md-4">
@@ -30,7 +30,7 @@
 
                         <img src="{{ asset('front_end') }}/assets/img/course12.jpg" class="img-fluid" alt="..."></a>
                     <h3 style="float: left">Dropshipping</h3>
-                    <h3 style="float: right">Total (41 video)</h3>
+                    <h3 style="float: right">Total ({{ Helper::count_course('Outsourcing') }} video)</h3>
 
                 </div>
                 <div class="col-md-4">
@@ -38,7 +38,7 @@
 
                         <img src="{{ asset('front_end') }}/assets/img/course13.jpg" class="img-fluid" alt="..."></a>
                     <h3 style="float: left">Freelancing</h3>
-                    <h3 style="float: right">Total (91 video)</h3>
+                    <h3 style="float: right">Total ({{ Helper::count_course('Freelancing') }} video)</h3>
 
 
                 </div>

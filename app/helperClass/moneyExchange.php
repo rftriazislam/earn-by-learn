@@ -2,6 +2,7 @@
 
 namespace App\helperClass;
 
+use App\Models\Course;
 use App\Models\ExchangeRate;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -22,5 +23,11 @@ class moneyExchange
 
         $price_product =  round($prc) . ' ' .     $exchange->rates;
         return $price_product;
+    }
+
+    public static   function count_course($course_name)
+    {
+        $course = Course::where('course', $course_name)->where('status', 1)->count();
+        return  $course;
     }
 }
