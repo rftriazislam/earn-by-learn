@@ -20,7 +20,7 @@
                         <source src="{{ asset('public/storage/course') }}/{{ $play->file }}" type="video/mp4">
                     </video>
 
-
+                    <h4>{{ $play->lecture }}</h4>
 
 
 
