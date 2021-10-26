@@ -20,7 +20,7 @@ class moneyExchange
         $exchange = ExchangeRate::where('rates', $currecny)->first();
         $prc = $price_user * $exchange->money;
 
-        $price_product =  round($prc, 2) . ' ' .     $exchange->rates;
+        $price_product =  round($prc) . ' ' .     $exchange->rates;
         return $price_product;
     }
 }
