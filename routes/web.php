@@ -67,6 +67,11 @@ Route::group(['middleware' => ['auth', 'user'],], function () {
     Route::get('/notification/child-confirm/{id}', [UserController::class, 'child_confirm'])->name('child.confirm');
     Route::get('/notification/child-reject/{id}', [UserController::class, 'child_reject'])->name('child.reject');
     Route::get('/affiliate-link', [UserController::class, 'affiliate_link'])->name('affiliate-link');
+
+    Route::get('/course/user-course', [UserController::class, 'user_course'])->name('user.course');
+    Route::get('/course/user-course-{view}', [UserController::class, 'course_single_view'])->name('course.single.view');
+
+    Route::get('/course/course-{id}', [UserController::class, 'course_play'])->name('course.play');
 });
 
 

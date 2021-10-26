@@ -73,7 +73,7 @@
                 </li>
 
                 <li class="nav-item has-treeview ">
-                    <a href="" class="nav-link ">
+                    <a href="{{ route('user.course') }}" class="nav-link ">
                         <i class="fas fa-book nav-icon"></i>
                         <p>
                             Course
