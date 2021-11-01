@@ -8,11 +8,10 @@
                 <div class="col-lg-3 col-md-6 footer-contact">
                     <h3>Earn By Learn</h3>
                     <p>
-                        A108 Adam Street <br>
-                        New York, NY 535022<br>
-                        United States <br><br>
-                        <strong>Phone:</strong><br>
-                        <strong>Email:</strong>aa@aa.com<br>
+                        Valley Stream<br>
+                        New York<br>
+                        United States <br>
+                        <strong>Email:</strong><b> earnbylearn2022@gmail.com</b><br>
                     </p>
                 </div>
 
@@ -39,9 +38,9 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 footer-newsletter">
-                    <h4>Join Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                    <form action="" method="post">
+                    <h4>Join Our EarnByLearn</h4>
+                    <p>Always</p>
+                    <form action="">
                         <input type="email" name="email"><input type="submit" value="Subscribe">
                     </form>
                 </div>
@@ -54,15 +53,12 @@
 
         <div class="me-md-auto text-center text-md-start">
             <div class="copyright">
-                &copy; Copyright <strong><span>Codewin</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>EarnByLearn</span></strong>. All Rights Reserved
             </div>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/ -->
-                Designed by <a href="">MD RIAZUL ISLAM</a>
-            </div>
+            {{-- <div class="credits" style="color: #fdfdfd;"> --}}
+
+            {{-- Designed by <a style="color: #fdfdfd;" href="">MD RIAZUL ISLAM</a> --}}
+            {{-- </div> --}}
         </div>
         <div class="social-links text-center text-md-right pt-3 pt-md-0">
             <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>

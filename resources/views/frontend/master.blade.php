@@ -10,9 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('front_end') }}/{{ asset('front_end') }}/assets/img/favicon.png" rel="icon">
-    <link href="{{ asset('front_end') }}/{{ asset('front_end') }}/assets/img/apple-touch-icon.png"
-        rel="apple-touch-icon">
+    <link href="{{ asset('front_end') }}/assets/img/learn.png" rel="icon">
+    <link href="{{ asset('front_end') }}/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -60,6 +59,9 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('front_end') }}/assets/js/main.js"></script>
     @yield('js')
+    <script>
+        console.log('google search rftriazislam');
+    </script>
 </body>
 
 </html>

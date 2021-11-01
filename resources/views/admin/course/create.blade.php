@@ -38,9 +38,17 @@
                                 <div class="form-group">
                                     <label>Course</label>
                                     <select class="form-control" name="course">
-                                        <option value="Digital">Digital</option>
+                                        {{-- <option value="Digital">Digital</option>
                                         <option value="Outsourcing">Outsourcing</option>
-                                        <option value="Freelancing">Freelancing</option>
+                                        <option value="Freelancing">Freelancing</option> --}}
+                                        {{-- <option value="Mastering IELTS Writing">Mastering IELTS Writing</option> --}}
+
+                                        <option value="Mastering IELTS Writing">Mastering IELTS Writing Task 2(Brand 7++ in
+                                            5 hours)
+                                        </option>
+
+                                        {{-- <option value="Become Shopify Expert">Become Shopify Expert</option> --}}
+                                        {{-- <option value="Create Wordpres Website">Create Wordpres Website</option> --}}
                                     </select>
                                 </div>
 
@@ -55,11 +63,15 @@
                                     <input type="text" name="lecture" class="form-control" required
                                         placeholder="Name of video">
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="inputClientCompany">Upload File MP4</label>
                                     <input type="file" name="file" class="form-control" required>
-                                </div>
+                                </div> --}}
 
+                                <div class="form-group">
+                                    <label for="inputClientCompany">Image ID</label>
+                                    <input type="text" name="file" class="form-control" required placeholder="image id">
+                                </div>
 
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-info">Save </button>
@@ -71,7 +83,7 @@
                     <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Course List Table</h3>
@@ -86,8 +98,11 @@
                                         <th>Course</th>
                                         <th>Section</th>
                                         <th>Lecture</th>
+                                        <th>image name</th>
                                         <th>Video/MP4</th>
                                         <th>Actions</th>
+                                        <th>Delete</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -97,6 +112,7 @@
                                             <td>{{ $item->course }}</td>
                                             <td>{{ $item->section }}</td>
                                             <td>{{ $item->lecture }}</td>
+                                            <td>{{ $item->file }}</td>
                                             <td> <video width="100" height="100" controls class="thumb"
                                                     data-full="{{ asset('public/storage/course') }}/{{ $item->file }}">
                                                     <source
@@ -116,13 +132,16 @@
 
 
                                             </td>
+                                            <td><a href="{{ route('course.delete', [$item->id]) }}"
+                                                    class="btn btn-danger btn-sm" style="color:white"> Delete
+                                                </a></td>
                                         </tr>
 
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
-
+                        {{ $data->links() }}
                     </div>
                     <!-- /.card-body -->
                 </div>

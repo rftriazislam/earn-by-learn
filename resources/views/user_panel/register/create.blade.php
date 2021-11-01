@@ -30,16 +30,16 @@ $payment = App\Models\PaymentMethod::where('role', 'admin')->get();
             <div class="row justify-content-center">
 
                 <div class="col-lg-8">
-                    <h1 class="text-center">Final Step </h1>
+                    <h1 class="text-center">Payment Step 2 </h1>
                     <div class="card" style="border: 0;">
 
                         <div class="card-body">
 
-                            <form action="{{ route('register.final.create') }}" method="post" class="php-email-form"
+                            <form action="{{ route('register.final.update.create') }}" method="post" class="php-email-form"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div
+                                    {{-- <div
                                         style="border: 3px solid #5fcf80;    margin-bottom: 13px;border-radius: 16px;    padding: 13px;">
                                         <h4 style="font-family:'' ">Step 1 : Send $10 (<b
                                                 style="color:red">{{ Helper::money_convert('USD', 10) }}</b>) Video
@@ -55,17 +55,17 @@ $payment = App\Models\PaymentMethod::where('role', 'admin')->get();
                                                             {{ $item->method_name }}</option>
                                                     @endforeach
 
-                                                    <input name="user_id" value="{{ $user->id }}" type="hidden">
+                                                    
                                                 </select>
                                             </div>
                                         </div>
                                         <div id="data-step-1"> </div>
 
                                     </div>
-                                    <br>
+                                    <br> --}}
                                     <div
                                         style="border: 3px solid #5fcf80;    margin-bottom: 13px;border-radius: 16px;    padding: 13px;">
-                                        <h4 style="font-family:'' ">Step 2 : Send $10 (<b
+                                        <h4 style="font-family:'' ">Step 1 : Send $10 (<b
                                                 style="color:red">{{ Helper::money_convert('USD', 10) }}</b>) Mentor-1
                                         </h4>
                                         <div class="form-group ">
@@ -84,6 +84,7 @@ $payment = App\Models\PaymentMethod::where('role', 'admin')->get();
                                                 </select>
                                                 <input name="first_mentor_id" value="{{ $user->refered_id }}"
                                                     type="hidden">
+                                                <input name="user_id" value="{{ $user->id }}" type="hidden">
                                             </div>
                                         </div>
                                         <div id="data-step-2"> </div>
@@ -91,7 +92,7 @@ $payment = App\Models\PaymentMethod::where('role', 'admin')->get();
                                     <br>
                                     <div
                                         style="border: 3px solid #5fcf80;    margin-bottom: 13px;border-radius: 16px;    padding: 13px;">
-                                        <h4 style="font-family:'' ">Step 3 : Send $5 (<b
+                                        <h4 style="font-family:'' ">Step 2 : Send $5 (<b
                                                 style="color:red">{{ Helper::money_convert('USD', 5) }}</b>) Mentor-2
                                         </h4>
                                         <div class="form-group ">
@@ -153,11 +154,11 @@ $payment = App\Models\PaymentMethod::where('role', 'admin')->get();
 @section('js')
     <script src="{{ asset('front_end/country/js/country_list/country.js') }}"></script>
     <script>
-        $('#step_1').on('change', function() {
-            var step_1 = $("#step_1 option:selected").val();
-            console.log(step_1);
-            get('step_1', '', step_1)
-        });
+        // $('#step_1').on('change', function() {
+        //     var step_1 = $("#step_1 option:selected").val();
+        //     console.log(step_1);
+        //     get('step_1', '', step_1)
+        // });
         $('#step_2').on('change', function() {
 
             var step_1 = $("#step_2 option:selected").val();

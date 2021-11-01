@@ -149,7 +149,7 @@
 
                                         <div class="col-md-12">
                                             <input id="refered_id" type="number" class="form-control " required
-                                                autocomplete="name" autofocus placeholder="Referral ID">
+                                                autocomplete="name" autofocus placeholder="Affiliate ID">
 
                                             @error('refered_id')
                                                 <span class="invalid-feedback" role="alert">

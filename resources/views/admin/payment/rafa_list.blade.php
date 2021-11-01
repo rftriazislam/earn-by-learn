@@ -14,7 +14,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Parent Table</h3>
+                                <h3 class="card-title">Student Table</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
@@ -48,7 +48,7 @@
 
                                                 <td>
                                                     <a
-                                                        href="{{ asset('public/storage/upload') }}/{{ $item->upload_screenshort }} }}"><img
+                                                        href="{{ asset('public/storage/upload') }}/{{ $item->upload_screenshort }}"><img
                                                             src="{{ asset('public/storage/upload') }}/{{ $item->upload_screenshort }}"
                                                             style="height: 50px;width:60px"> </a>
                                                 </td>

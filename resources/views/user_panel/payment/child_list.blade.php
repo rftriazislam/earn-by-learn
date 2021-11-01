@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>List Of Product</h1>
+                        <h1>Batch-01</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -28,7 +28,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Product Table</h3>
+                                <h3 class="card-title">Batch-01 Table</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
@@ -59,7 +59,7 @@
 
                                                 <td>
                                                     <a
-                                                        href="{{ asset('public/storage/mentor_2') }}/{{ $item->second_upload_screenshort }} }}"><img
+                                                        href="{{ asset('public/storage/mentor_2') }}/{{ $item->second_upload_screenshort }}"><img
                                                             src="{{ asset('public/storage/mentor_2') }}/{{ $item->second_upload_screenshort }}"
                                                             style="height: 50px;width:60px"> </a>
                                                 </td>
@@ -101,7 +101,7 @@
                                 </table>
                             </div>
 
-
+                            {{ $user->links() }}
 
                         </div>
 

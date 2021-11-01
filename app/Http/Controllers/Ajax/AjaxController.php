@@ -27,6 +27,7 @@ class AjaxController extends Controller
         }
 
 
+
         if ($payment) {
             $output = '<div class="form-group ">
 

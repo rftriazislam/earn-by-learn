@@ -37,7 +37,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="inputClientCompany">Method Name </label>
+                                    <label for="inputClientCompany"> New Method Name </label>
                                     <input type="text" name="method_name" class="form-control" required
                                         placeholder="Paypal">
                                 </div>
@@ -85,9 +85,13 @@
                                                     </a>
 
                                                 @endif
-
+                                                <a href="{{ route('method.edit', [$item->id]) }}"
+                                                    class="btn btn-info btn-sm" style="color:white"> Edit/Update
+                                                </a>
 
                                             </td>
+
+
                                         </tr>
                                     @endforeach
                                 </tbody>
